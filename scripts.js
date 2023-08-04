@@ -1,6 +1,9 @@
+const button = document.querySelector('.change_city')
+const temp = document.querySelector ('.temp');
+const city = document.querySelector ('.city');
+const input = document.querySelector('.input');
+const find = document.querySelector('.find');
 function showWeather (data)  {
-    const temp = document.querySelector ('.temp');
-    const city = document.querySelector ('.city');
     temp.innerHTML =` ${Math.round(data.main.temp)-273} °C` ;
     city.innerHTML = `It is ${data.weather[0].description} in ${data.name}`;
 }
@@ -12,9 +15,33 @@ navigator.geolocation.getCurrentPosition(function(position) {
         return response.json();
     }).then(function (data) {
         showWeather(data)
-        console.log(data)
     }).catch(function (err) {
         console.log(err)
     })
 })
-console.log(lat +' 00asd ' + long)
+function showSearch () {
+    button.classList.add('hidden');
+    temp.classList.add('hidden');
+    city.classList.add('hidden');
+    input.classList.remove('hidden');
+    find.classList.remove('hidden');
+}
+function displayWeather() {
+    button.classList.remove('hidden');
+    temp.classList.remove('hidden');
+    city.classList.remove('hidden');
+    input.classList.add('hidden');
+    find.classList.add('hidden');
+}
+function findCity () {
+    console.log (input.value)
+    fetch (`https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${KEY}`)
+    .then ((response) => {return response.json()})
+    .then ((data) => {showWeather(data)})
+    .then (()=> {displayWeather()})
+    .catch((err) =>{alert('can\'t find your city');})
+}
+
+button.addEventListener('click', () => {showSearch()})
+find.addEventListener('click', ()=> {findCity()})
+input.addEventListener('keypress', (e) =>{if(e.key === 'Enter'){findCity()}})

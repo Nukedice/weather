@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: 'Inter';
 }
 
 body {
@@ -15,7 +18,6 @@ header,
 footer {
     text-align: center;
     color: rgba(255, 255, 255, 0.50);
-    font-family: Inter;
     font-size: 28px;
     font-style: normal;
     font-weight: 300;
@@ -43,7 +45,6 @@ footer {
 
 .temp {
     color: #FFF;
-    font-family: Inter;
     font-size: 72px;
     font-style: normal;
     font-weight: 700;
@@ -52,7 +53,6 @@ footer {
 
 .city {
     color: rgba(255, 255, 255, 0.80);
-    font-family: Inter;
     font-size: 24px;
     font-style: normal;
     font-weight: 400;
@@ -71,4 +71,35 @@ footer {
     border: 0;
     cursor: pointer;
     margin-top: 36px;
+}
+
+.input {
+    background-color: inherit;
+    border: 0;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.70);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 36px;
+    margin-bottom: 41px;
+    text-align: center;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.find {
+    width: 140px;
+    height: 48px;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: none;
+}
+.find:hover {
+    border: 2px solid orange;
+}
+.hidden {
+    display: none;
 }
